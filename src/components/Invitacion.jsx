@@ -192,23 +192,7 @@ const Invitacion = () => {
         </div>
       </div>
 
-      {/* Debug info - Solo visible en desarrollo */}
-      {process.env.NODE_ENV === 'development' && (
-        <div style={{
-          position: 'fixed', 
-          bottom: '10px', 
-          right: '10px', 
-          background: 'rgba(0,0,0,0.8)', 
-          color: 'white', 
-          padding: '10px', 
-          borderRadius: '5px',
-          fontSize: '12px'
-        }}>
-          <div>✅ Confirmados: {confirmed}</div>
-          <div>❌ No asisten: {declined}</div>
-          <div>🔄 Loading: {loading ? 'Sí' : 'No'}</div>
-        </div>
-      )}
+
 
       {/* ✅ MODAL ACTUALIZADO: Modal de búsqueda de invitado */}
       {showSearchForm && !currentInvitado && (
