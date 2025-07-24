@@ -1,105 +1,22 @@
-export const invitadosPermitidos = [
-    "María García López",
-    "Juan Carlos Pérez",
-    "Ana Beatriz Martínez",
-    "Carlos Eduardo Rodríguez",
-    "Lucía Fernández Silva",
-    "Miguel Ángel Torres",
-    "Patricia Rosales Cruz",
-    "Ricardo Morales Vega",
-    "Sofía Jiménez Ruiz",
-    "Alejandro Herrera Soto",
-    "Carmen Elena Vargas",
-    "Roberto Castillo Méndez",
-    "Valeria Ramos Delgado",
-    "Fernando Gutiérrez Paz",
-    "Isabella Romero Aguilar",
-    "Diego Armando Flores",
-    "Camila Ortega Reyes",
-    "Sebastián Luna Córdoba",
-    "Daniela Moreno Chávez",
-    "Andrés Felipe Ríos",
-    "Gabriela Mendoza Santos",
-    "José Antonio Guerrero",
-    "Natalia Campos Ibarra",
-    "Eduardo Salinas Montoya",
-    "Paola Andrea Navarro",
-    "Cristian David Peña",
-    "Alejandra Fuentes Gil",
-    "Mauricio Estrada Lara",
-    "Fernanda Cabrera Núñez",
-    "Héctor Manuel Serrano",
-    "Adriana Espinoza Valdez",
-    "Gonzalo Paredes Maldonado",
-    "Mariana Cárdenas Rojas",
-    "Emilio Contreras Sandoval",
-    "Regina Pacheco Herrera",
-    "Óscar Javier Molina",
-    "Celeste Vásquez Durán",
-    "Nicolás Ramírez Figueroa",
-    "Valentina Ochoa Bermúdez",
-    "Rodrigo Silva Medina",
-    "Angélica Ruiz Castañeda",
-    "Leonardo Díaz Espejo",
-    "Constanza Morales León",
-    "Iván Alejandro Sánchez",
-    "Monserrat Álvarez Quintero",
-    "Julián Enrique Varela",
-    "Estefanía Iglesias Poveda",
-    "Marco Antonio Benítez",
-    "Ximena Calderón Acosta",
-    "Adrián Mejía Caballero",
-    "Pilar Domínguez Zúñiga",
-    "Tomás Aguilera Miranda",
-    "Renata Carrasco Téllez",
-    "Salvador Hernández Prieto",
-    "Bárbara Mendizábal Cortés",
-    "Esteban Cordero Villalobos",
-    "Leticia Araya Solano",
-    "Facundo Brenes Esquivel",
-    "Carolina Ulate Badilla",
-    "Patricio Mora Gamboa",
-    "Alejandra Víquez Monge",
-    "Francisco Javier Robles",
-    "Giovanna Fallas Acuña",
-    "Ignacio Segura Hernández",
-    "Marisol Chacón Elizondo",
-    "Álvaro Quirós Jiménez",
-    "Tatiana Solís Vindas",
-    "César Augusto Trejos",
-    "Priscilla Mata Porras",
-    "Maximiliano Arce Valverde",
-    "Rebeca Cascante Blanco",
-    "Arturo Zamora Picado",
-    "Karina Leiva Gómez",
-    "Benjamín Rodríguez Castro",
-    "Yahaira Soto Campos",
-    "Gabriel Montero Salazar",
-    "Esperanza Vargas Jiménez",
-    "Jair Quispe",
-    "Claudia Patricia Rojas",
-    "Sergio Daniel Villalobos",
-    "Antonia Guerrero Moya",
-    "Gustavo Adolfo Cerdas",
-    "Marlene Espinoza Méndez",
-    "Orlando Javier Bermúdez",
-    "Silvia Elena Navarro",
-    "Emanuel Cordero Guzmán",
-    "Verónica Alvarado Pérez",
-    "Rafael Ignacio Herrera",
-    "Roxana Morales Torres",
-    "Lorenzo Méndez Campos",
-    "Estela Jiménez Vargas",
-    "Néstor Hugo Ramírez",
-    "Graciela Fernández Mora",
-    "Joel Alexander Castillo",
-    "Miriam Soledad Arce",
-    "Emiliano Varela Segura",
-    "Cristina Rodríguez Ávila",
-    "Víctor Manuel Chaves",
-    "Lourdes Eugenia Solano",
-    "Enrique Andrés Picado",
-    "Sandra Milena Vindas",
-    "Abel Francisco Torres",
-    "Yolanda Esperanza Mata"
-  ];
+// Elimina o comenta el import del data.js
+// import { invitedGuests } from './data/invitedGuests.js';
+
+// Agrega Firebase
+import { db } from './config/firebase'; // Copia el mismo firebase.js
+import { collection, query, where, getDocs } from 'firebase/firestore';
+
+// Nueva función para verificar invitados
+const verificarInvitado = async (nombreIngresado) => {
+  try {
+    const q = query(
+      collection(db, 'invited_guests'),
+      where('name', '==', nombreIngresado.trim())
+    );
+    
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty;
+  } catch (error) {
+    console.error('Error verificando invitado:', error);
+    return false;
+  }
+};

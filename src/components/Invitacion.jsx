@@ -23,6 +23,7 @@ const Invitacion = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentInvitado, setCurrentInvitado] = useState(null);
   const [searchError, setSearchError] = useState('');
+  const [searching, setSearching] = useState(false); // ✅ NUEVO: Estado de búsqueda
 
   // Funciones existentes
   const handleInputChange = (e) => {
@@ -97,47 +98,58 @@ const Invitacion = () => {
     setSearchTerm('');
     setSearchError('');
     setSubmitted(false);
+    setSearching(false);
   };
 
-  // NUEVA FUNCIÓN: Buscar invitado
-  const handleSearch = () => {
+  // ✅ FUNCIÓN ACTUALIZADA: Buscar invitado (ahora async)
+  const handleSearch = async () => {
     setSearchError('');
+    setSearching(true);
     
     if (!searchTerm.trim()) {
       setSearchError('Por favor ingresa tu nombre');
+      setSearching(false);
       return;
     }
 
     if (searchTerm.trim().length < 3) {
       setSearchError('Ingresa al menos 3 caracteres');
+      setSearching(false);
       return;
     }
 
-    const invitadoEncontrado = buscarInvitado(searchTerm);
-    
-    if (invitadoEncontrado) {
-      // Verificar si ya confirmó
-      const yaConfirmado = yaConfirmo(invitadoEncontrado);
+    try {
+      const invitadoEncontrado = await buscarInvitado(searchTerm); // ✅ Ahora con await
       
-      if (yaConfirmado) {
-        setCurrentInvitado({
-          name: invitadoEncontrado,
-          alreadyConfirmed: true,
-          confirmationData: yaConfirmado
-        });
+      if (invitadoEncontrado) {
+        // Verificar si ya confirmó
+        const yaConfirmado = yaConfirmo(invitadoEncontrado);
+        
+        if (yaConfirmado) {
+          setCurrentInvitado({
+            name: invitadoEncontrado,
+            alreadyConfirmed: true,
+            confirmationData: yaConfirmado
+          });
+        } else {
+          setCurrentInvitado({
+            name: invitadoEncontrado,
+            alreadyConfirmed: false
+          });
+          // Pre-llenar el formulario con el nombre correcto
+          setFormData(prev => ({
+            ...prev,
+            name: invitadoEncontrado
+          }));
+        }
       } else {
-        setCurrentInvitado({
-          name: invitadoEncontrado,
-          alreadyConfirmed: false
-        });
-        // Pre-llenar el formulario con el nombre correcto
-        setFormData(prev => ({
-          ...prev,
-          name: invitadoEncontrado
-        }));
+        setSearchError('No te encontramos en la lista de invitados. Verifica la escritura de tu nombre completo.');
       }
-    } else {
-      setSearchError('No te encontramos en la lista de invitados. Verifica la escritura de tu nombre completo.');
+    } catch (error) {
+      console.error('Error buscando invitado:', error);
+      setSearchError('Error al buscar. Por favor intenta de nuevo.');
+    } finally {
+      setSearching(false);
     }
   };
 
@@ -145,6 +157,13 @@ const Invitacion = () => {
   const proceedToRSVP = () => {
     setShowSearchForm(false);
     setShowRSVPForm(true);
+  };
+
+  // ✅ FUNCIÓN MEJORADA: Manejar Enter en input de búsqueda
+  const handleKeyPress = async (e) => {
+    if (e.key === 'Enter' && !searching) {
+      await handleSearch();
+    }
   };
 
   // Estadísticas en tiempo real (opcional - para debug)
@@ -191,7 +210,7 @@ const Invitacion = () => {
         </div>
       )}
 
-      {/* NUEVO: Modal de búsqueda de invitado */}
+      {/* ✅ MODAL ACTUALIZADO: Modal de búsqueda de invitado */}
       {showSearchForm && !currentInvitado && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -200,6 +219,7 @@ const Invitacion = () => {
               <button 
                 className="close-button" 
                 onClick={() => setShowSearchForm(false)}
+                disabled={searching}
               >
                 ×
               </button>
@@ -216,12 +236,44 @@ const Invitacion = () => {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Ej: María García López"
-                  onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                  style={{width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid #ddd'}}
+                  onKeyPress={handleKeyPress}
+                  disabled={searching}
+                  style={{
+                    width: '100%', 
+                    padding: '12px', 
+                    borderRadius: '8px', 
+                    border: '1px solid #ddd',
+                    opacity: searching ? 0.7 : 1
+                  }}
                 />
               </div>
               
-              {searchError && (
+              {/* ✅ MENSAJE MEJORADO: Con estados de búsqueda */}
+              {searching && (
+                <div className="searching-message" style={{
+                  color: '#3498db', 
+                  marginTop: '10px', 
+                  padding: '10px', 
+                  backgroundColor: '#ebf3fd', 
+                  borderRadius: '5px',
+                  fontSize: '14px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <div className="spinner" style={{
+                    width: '16px',
+                    height: '16px',
+                    border: '2px solid #e3f2fd',
+                    borderTop: '2px solid #3498db',
+                    borderRadius: '50%',
+                    animation: 'spin 1s linear infinite'
+                  }}></div>
+                  Buscando en la lista de invitados...
+                </div>
+              )}
+              
+              {searchError && !searching && (
                 <div className="error-message" style={{
                   color: '#e74c3c', 
                   marginTop: '10px', 
@@ -239,6 +291,7 @@ const Invitacion = () => {
                   type="button"
                   className="cancel-button"
                   onClick={() => setShowSearchForm(false)}
+                  disabled={searching}
                 >
                   Cancelar
                 </button>
@@ -246,8 +299,13 @@ const Invitacion = () => {
                   type="button"
                   className="submit-button"
                   onClick={handleSearch}
+                  disabled={searching || !searchTerm.trim()}
+                  style={{
+                    opacity: (searching || !searchTerm.trim()) ? 0.6 : 1,
+                    cursor: (searching || !searchTerm.trim()) ? 'not-allowed' : 'pointer'
+                  }}
                 >
-                  Buscar
+                  {searching ? 'Buscando...' : 'Buscar'}
                 </button>
               </div>
             </div>
@@ -362,8 +420,6 @@ const Invitacion = () => {
                 </small>
               </div>
 
-              
-
               <div className="form-group">
                 <label>¿Confirmas tu asistencia? *</label>
                 <div className="attendance-buttons">
@@ -391,7 +447,7 @@ const Invitacion = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Algún mensaje especial para los novios..."
+                  placeholder="Algún mensaje especial para nosotros"
                   rows="3"
                 ></textarea>
               </div>
@@ -416,6 +472,14 @@ const Invitacion = () => {
           </div>
         </div>
       )}
+
+      {/* ✅ NUEVO: CSS para spinner animation */}
+      <style jsx>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   );
 };
