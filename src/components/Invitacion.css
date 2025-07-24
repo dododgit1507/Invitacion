@@ -1,4 +1,4 @@
-/* Invitacion Component Styles - Con fondo.png */
+/* Invitacion Component Styles - Fixed for Railway */
 .invitacion-container {
   width: 100vw;
   height: 100vh;
@@ -7,16 +7,16 @@
   background: linear-gradient(135deg, #f5f1eb 0%, #ebe7e1 100%);
 }
 
-/* ✅ SOLO ESTE CAMBIO: Fondo usando fondo.png centrado */
+/* ✅ ACTUALIZADO: Fondo con URL de Cloudinary */
 .background-image {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/fondo.png'); /* ← CAMBIO: Tu imagen de fondo */
-  background-size: contain; /* ← Cambiado para que se vea completa */
-  background-position: center center; /* ← Centrado perfecto */
+  background-image: url('https://res.cloudinary.com/dhdpp8eq2/image/upload/v1753391460/fondo_meqpa2.png');
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
   z-index: 1;
 }
@@ -28,7 +28,7 @@
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column; /* ← Cambiado a columna */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
@@ -37,8 +37,8 @@
 /* RSVP Button superpuesto - Ahora visible y abajo */
 .rsvp-overlay {
   text-align: center;
-  margin-top: auto; /* ← Esto lo empuja hacia abajo */
-  margin-bottom: 40px; /* ← Espacio desde el borde inferior */
+  margin-top: auto;
+  margin-bottom: 40px;
   width: 100%;
 }
 
@@ -476,10 +476,10 @@
   background: #2c3e50;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 12px 32px;
+  border-radius: 20px;
   margin-bottom: 20px;
   margin-right: 35px;
-  border-radius: 20px;
   font-size: 10px;
   letter-spacing: 2px;
   font-weight: 500;
