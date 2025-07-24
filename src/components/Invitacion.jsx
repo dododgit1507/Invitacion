@@ -148,124 +148,48 @@ const Invitacion = () => {
   };
 
   // Estadísticas en tiempo real (opcional - para debug)
-  const totalGuests = guests.length;
   const confirmed = guests.filter(g => g.confirmed === true).length;
   const declined = guests.filter(g => g.confirmed === false).length;
 
   return (
     <div className="invitacion-container">
-      <div className="invitation-card">
-        {/* Decorative top border with botanical elements */}
-        <div className="card-header">
-          <div className="botanical-border-top">
-            <div className="botanical-left"></div>
-            <div className="botanical-right"></div>
-          </div>
-          <div className="header-text">
-            <p className="invitation-para">INVITACIÓN PARA:</p>
-          </div>
-        </div>
-
-        {/* Photo section with circular frame */}
-        <div className="photo-container">
-          <div className="photo-circle">
-            <img 
-              src="/cat.jpeg" 
-              alt="Alexandra & Stefan" 
-              className="couple-image"
-            />
-            <div className="photo-botanical-overlay">
-              <div className="botanical-decoration-left"></div>
-              <div className="botanical-decoration-right"></div>
+      {/* Fondo personalizado */}
+      <div className="background-image"></div>
+      
+      {/* Contenido superpuesto */}
+      <div className="overlay-content">
+        {/* RSVP Button */}
+        <div className="rsvp-overlay">
+          {submitted ? (
+            <div className="success-message">
+              <p>¡Gracias por confirmar!</p>
+              <p>Hemos recibido tu respuesta.</p>
             </div>
-          </div>
-        </div>
-
-        {/* Main content */}
-        <div className="card-content">
-          {/* Celebration text */}
-          <div className="celebration-text">
-            <p className="invite-text">TE INVITAMOS A CELEBRAR</p>
-            <p className="event-text">NUESTRA BODA DE PAPEL</p>
-          </div>
-
-          {/* Names */}
-          <div className="couple-names">
-            <h1 className="name alexandra">Alexandra</h1>
-            <div className="ampersand-symbol">&</div>
-            <h1 className="name stefan">Stefan</h1>
-          </div>
-
-          {/* Decorative heart divider */}
-          <div className="heart-divider">
-            <div className="line-left"></div>
-            <div className="heart">♥</div>
-            <div className="line-right"></div>
-          </div>
-
-          {/* Event details */}
-          <div className="event-details">
-            <p className="day">SÁBADO</p>
-            <p className="date">30 agosto</p>
-            <div className="time-section">
-              <span className="dots">• • •</span>
-              <span className="time">12:30 P.M.</span>
-              <span className="dots">• • •</span>
-            </div>
-          </div>
-
-          {/* Location */}
-          <div className="location">
-            <p className="address">LOS EUCALIPTOS 233 SANTIAGO, DE SURCO</p>
-          </div>
-
-          {/* Dress code */}
-          <div className="dress-code">
-            <p><strong>Dress code:</strong> Elegante</p>
-          </div>
-
-          {/* RSVP Button - MODIFICADO para usar búsqueda */}
-          <div className="rsvp">
-            {submitted ? (
-              <div className="success-message">
-                <p>¡Gracias por confirmar tu asistencia!</p>
-                <p>Hemos recibido tu respuesta.</p>
-              </div>
-            ) : (
-              <button className="confirm-button" onClick={openSearchForm}>
-                CONFIRMA TU ASISTENCIA
-              </button>
-            )}
-          </div>
-
-          {/* Debug info - Solo visible en desarrollo */}
-          {process.env.NODE_ENV === 'development' && (
-            <div style={{
-              position: 'fixed', 
-              bottom: '10px', 
-              right: '10px', 
-              background: 'rgba(0,0,0,0.8)', 
-              color: 'white', 
-              padding: '10px', 
-              borderRadius: '5px',
-              fontSize: '12px'
-            }}>
-              <div>📊 Total: {totalGuests}</div>
-              <div>✅ Confirmados: {confirmed}</div>
-              <div>❌ No asisten: {declined}</div>
-              <div>🔄 Loading: {loading ? 'Sí' : 'No'}</div>
-            </div>
+          ) : (
+            <button className="confirm-button" onClick={openSearchForm}>
+              CONFIRMA TU ASISTENCIA
+            </button>
           )}
         </div>
-
-        {/* Decorative bottom border */}
-        <div className="card-footer">
-          <div className="botanical-border-bottom">
-            <div className="botanical-bottom-left"></div>
-            <div className="botanical-bottom-right"></div>
-          </div>
-        </div>
       </div>
+
+      {/* Debug info - Solo visible en desarrollo */}
+      {process.env.NODE_ENV === 'development' && (
+        <div style={{
+          position: 'fixed', 
+          bottom: '10px', 
+          right: '10px', 
+          background: 'rgba(0,0,0,0.8)', 
+          color: 'white', 
+          padding: '10px', 
+          borderRadius: '5px',
+          fontSize: '12px'
+        }}>
+          <div>✅ Confirmados: {confirmed}</div>
+          <div>❌ No asisten: {declined}</div>
+          <div>🔄 Loading: {loading ? 'Sí' : 'No'}</div>
+        </div>
+      )}
 
       {/* NUEVO: Modal de búsqueda de invitado */}
       {showSearchForm && !currentInvitado && (
@@ -438,29 +362,7 @@ const Invitacion = () => {
                 </small>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="tu@email.com"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="phone">Teléfono</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="Tu número de teléfono"
-                />
-              </div>
+              
 
               <div className="form-group">
                 <label>¿Confirmas tu asistencia? *</label>
@@ -481,24 +383,6 @@ const Invitacion = () => {
                   </button>
                 </div>
               </div>
-
-              {formData.attendance === true && (
-                <div className="form-group">
-                  <label htmlFor="companions">¿Cuántos acompañantes?</label>
-                  <select
-                    id="companions"
-                    name="companions"
-                    value={formData.companions}
-                    onChange={handleInputChange}
-                  >
-                    <option value="0">Solo yo</option>
-                    <option value="1">1 acompañante</option>
-                    <option value="2">2 acompañantes</option>
-                    <option value="3">3 acompañantes</option>
-                    <option value="4">4 acompañantes</option>
-                  </select>
-                </div>
-              )}
 
               <div className="form-group">
                 <label htmlFor="message">Mensaje (opcional)</label>
