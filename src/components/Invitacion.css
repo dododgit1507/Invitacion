@@ -34,12 +34,14 @@
   padding: 40px 20px;
 }
 
-/* RSVP Button superpuesto - Ahora visible y abajo */
+/* RSVP Button superpuesto - Responsive mejorado */
 .rsvp-overlay {
   text-align: center;
   margin-top: auto;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 /* Invitation Card - Main Container */
@@ -467,7 +469,7 @@
   font-family: 'Georgia', serif;
 }
 
-/* RSVP Button - Exact Black Button */
+/* RSVP Button - Responsive mejorado */
 .rsvp {
   margin: 30px 0 0;
 }
@@ -477,17 +479,21 @@
   color: white;
   border: none;
   padding: 12px 32px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  margin-right: 35px;
-  font-size: 10px;
-  letter-spacing: 2px;
+  border-radius: 22px;
+  font-size: 11px;
+  letter-spacing: 1.8px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
   font-family: 'Arial', sans-serif;
   box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+  min-width: 250px;
+  max-width: 90vw;
+  white-space: nowrap;
+  position: relative;
+  z-index: 100;
+  margin-left: -15px;
 }
 
 .confirm-button:hover {
@@ -527,19 +533,68 @@
   font-weight: 500;
 }
 
-/* Modal Styles */
+/* Modal Styles - Texto oscuro asegurado */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Asegurar texto oscuro en todos los modales */
+.modal-overlay * {
+  color: #2c3e50 !important;
+}
+
+.modal-overlay h3,
+.modal-overlay h4,
+.modal-overlay p,
+.modal-overlay label,
+.modal-overlay span,
+.modal-overlay div {
+  color: #2c3e50 !important;
+}
+
+.modal-overlay input,
+.modal-overlay textarea,
+.modal-overlay select {
+  color: #2c3e50 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Excepciones para botones que deben mantener su color */
+.modal-overlay .submit-button {
+  color: #ffffff !important;
+  background: #2c3e50 !important;
+}
+
+.modal-overlay .cancel-button {
+  color: #6b5b4f !important;
+  background: rgba(212, 197, 163, 0.2) !important;
+}
+
+.modal-overlay .attendance-btn.selected {
+  color: #2c3e50 !important;
+  background: #d4c5a3 !important;
+}
+
+.modal-overlay .close-button {
+  color: #d4c5a3 !important;
+}
+
+/* Placeholder text también oscuro */
+.modal-overlay input::placeholder,
+.modal-overlay textarea::placeholder {
+  color: #6b5b4f !important;
+  opacity: 0.7;
 }
 
 .modal-content {
@@ -665,8 +720,9 @@
 
 .attendance-btn.selected {
   background: #d4c5a3;
-  color: white;
+  color: #2c3e50;
   border-color: #d4c5a3;
+  font-weight: 500;
 }
 
 /* Form Actions */
@@ -703,7 +759,7 @@
 
 .submit-button {
   background: #2c3e50;
-  color: white;
+  color: #ffffff;
   box-shadow: 0 2px 8px rgba(44, 62, 80, 0.3);
 }
 
@@ -764,6 +820,19 @@
   .modal-content {
     max-width: 95%;
   }
+  
+  /* RSVP Button - Tablet responsive */
+  .rsvp-overlay {
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+  
+  .confirm-button {
+    padding: 14px 35px;
+    font-size: 11px;
+    min-width: 260px;
+    max-width: 85vw;
+  }
 }
 
 @media (max-width: 480px) {
@@ -786,5 +855,58 @@
   
   .attendance-buttons {
     flex-direction: column;
+  }
+  
+  /* RSVP Button - Mobile responsive - Fijo en la parte inferior */
+  .invitacion-container {
+    overflow: hidden;
+  }
+  
+  .overlay-content {
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .rsvp-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 20px 15px;
+    background: rgba(169, 173, 154, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    padding-left: 25px;
+  }
+  
+  .confirm-button {
+    padding: 12px 24px;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    min-width: 200px;
+    max-width: 85vw;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.4);
+  }
+  
+  .confirm-button:hover {
+    transform: translateY(-2px);
   }
 }
