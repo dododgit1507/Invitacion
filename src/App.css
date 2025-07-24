@@ -1,0 +1,10 @@
+/* App.css - Cleaned up for invitation component with scroll support */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: block;
+  background: linear-gradient(135deg, #f8f6f3 0%, #e9e5e0 100%);
+}
+

@@ -1,0 +1,837 @@
+/* Invitacion Component Styles - Card Design Like Reference Image */
+.invitacion-container {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #f8f6f3 0%, #e9e5e0 100%);
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Invitation Card - Main Container */
+.invitation-card {
+  max-width: 500px;
+  width: 90%;
+  background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+  margin: 20px;
+}
+
+/* Card Header with Botanical Border */
+.card-header {
+  position: relative;
+  background: linear-gradient(45deg, #d4c5b9, #c9b8a8);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botanical-border-top {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.botanical-left,
+.botanical-right {
+  position: absolute;
+  width: 120px;
+  height: 80px;
+  top: 0;
+  background-image: 
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,50 Q30,20 50,50 Q70,80 90,50" stroke="%23ffffff" stroke-width="2" fill="none" opacity="0.6"/><circle cx="20" cy="40" r="2" fill="%23ffffff" opacity="0.4"/><circle cx="80" cy="60" r="1.5" fill="%23ffffff" opacity="0.5"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.botanical-left {
+  left: 0;
+}
+
+.botanical-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+/* Header Text */
+.header-text {
+  position: relative;
+  z-index: 10;
+}
+
+.invitation-para {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #5a6c57;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Photo Container */
+.photo-container {
+  padding: 30px 20px 20px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.photo-circle {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.couple-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(5%) brightness(1.05);
+}
+
+.photo-botanical-overlay {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  pointer-events: none;
+}
+
+.botanical-decoration-left,
+.botanical-decoration-right {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-image: 
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,80 Q40,40 60,80 M30,70 Q50,30 70,70" stroke="%23ffffff" stroke-width="3" fill="none" opacity="0.7"/><circle cx="35" cy="60" r="3" fill="%23ffffff" opacity="0.6"/><circle cx="65" cy="50" r="2" fill="%23ffffff" opacity="0.5"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.botanical-decoration-left {
+  top: 20px;
+  left: -10px;
+}
+
+.botanical-decoration-right {
+  bottom: 20px;
+  right: -10px;
+  transform: rotate(180deg);
+}
+
+/* Card Content */
+.card-content {
+  padding: 20px 30px 30px;
+  text-align: center;
+}
+
+/* Celebration Text */
+.celebration-text {
+  margin-bottom: 25px;
+}
+
+.invite-text {
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  margin: 0 0 5px;
+  color: #5a6c57;
+  font-weight: 400;
+}
+
+.event-text {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #7a8471;
+  font-weight: 300;
+}
+
+/* Couple Names */
+.couple-names {
+  margin: 30px 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.name {
+  font-size: 42px;
+  font-weight: 300;
+  margin: 0;
+  color: #2c3e50;
+  font-family: 'Georgia', serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ampersand-symbol {
+  font-size: 32px;
+  color: #8b9f89;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Heart Divider */
+.heart-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 15px;
+}
+
+.line-left,
+.line-right {
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #8b9f89, transparent);
+}
+
+.heart {
+  font-size: 16px;
+  color: #8b9f89;
+}
+
+/* Event Details */
+.event-details {
+  margin: 25px 0;
+}
+
+.day {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin: 0 0 5px;
+  color: #5a6c57;
+  font-weight: 400;
+}
+
+.date {
+  font-size: 32px;
+  font-weight: 300;
+  margin: 0 0 15px;
+  color: #2c3e50;
+  font-family: 'Georgia', serif;
+}
+
+.time-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.dots {
+  color: #8b9f89;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.time {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #5a6c57;
+  font-weight: 400;
+}
+
+/* Location */
+.location {
+  margin: 20px 0;
+}
+
+.address {
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #5a6c57;
+  font-weight: 400;
+}
+
+/* Dress Code */
+.dress-code {
+  margin: 15px 0 25px;
+}
+
+.dress-code p {
+  font-size: 13px;
+  margin: 0;
+  color: #5a6c57;
+  font-style: italic;
+}
+
+/* RSVP Button */
+.rsvp {
+  margin: 25px 0 0;
+}
+
+.confirm-button {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 25px;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(44, 62, 80, 0.3);
+  text-transform: uppercase;
+}
+
+.confirm-button:hover {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(44, 62, 80, 0.4);
+}
+
+/* Card Footer */
+.card-footer {
+  position: relative;
+  background: linear-gradient(45deg, #d4c5b9, #c9b8a8);
+  height: 60px;
+}
+
+.botanical-border-bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.botanical-bottom-left,
+.botanical-bottom-right {
+  position: absolute;
+  width: 100px;
+  height: 60px;
+  top: 0;
+  background-image: 
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M10,20 Q30,60 50,20 Q70,60 90,20" stroke="%23ffffff" stroke-width="2" fill="none" opacity="0.6"/><circle cx="25" cy="40" r="2" fill="%23ffffff" opacity="0.4"/><circle cx="75" cy="30" r="1.5" fill="%23ffffff" opacity="0.5"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.botanical-bottom-left {
+  left: 0;
+}
+
+.botanical-bottom-right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+/* Success Message */
+.success-message {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  border-radius: 15px;
+  border: 2px solid #28a745;
+}
+
+.success-message p {
+  margin: 5px 0;
+  color: #155724;
+  font-weight: 500;
+}
+
+.success-message p:first-child {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.success-message p:last-child {
+  font-size: 14px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #f5f3f0 0%, #e8e4df 100%);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  padding: 25px 30px 20px;
+  border-bottom: 1px solid rgba(139, 159, 137, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: 'Georgia', serif;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #8b9f89;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(139, 159, 137, 0.1);
+  color: #5a6c57;
+}
+
+/* Form Styles */
+.rsvp-form {
+  padding: 20px 30px 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(139, 159, 137, 0.3);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Georgia', serif;
+  background: rgba(255, 255, 255, 0.8);
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #8b9f89;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 3px rgba(139, 159, 137, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+
+/* Attendance Buttons */
+.attendance-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+
+.attendance-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid rgba(139, 159, 137, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #5a6c57;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.attendance-btn:hover {
+  border-color: #8b9f89;
+  background: rgba(139, 159, 137, 0.1);
+}
+
+.attendance-btn.selected {
+  background: linear-gradient(135deg, #8b9f89, #7a8471);
+  color: white;
+  border-color: #8b9f89;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: flex-end;
+}
+
+.cancel-button,
+.submit-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.cancel-button {
+  background: rgba(139, 159, 137, 0.1);
+  color: #5a6c57;
+  border: 2px solid rgba(139, 159, 137, 0.3);
+}
+
+.cancel-button:hover {
+  background: rgba(139, 159, 137, 0.2);
+  border-color: #8b9f89;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
+}
+
+.submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(44, 62, 80, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding: 20px 20px 15px;
+  }
+  
+  .modal-header h3 {
+    font-size: 20px;
+  }
+  
+  .rsvp-form {
+    padding: 15px 20px 25px;
+  }
+  
+  .attendance-buttons {
+    flex-direction: column;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .cancel-button,
+  .submit-button {
+    width: 100%;
+  }
+}
+
+/* Details section */
+.details-section {
+  grid-area: details;
+}
+
+/* Decorative divider */
+.decorative-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0;
+  gap: 20px;
+}
+
+.divider-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #8b9f89, transparent);
+}
+
+.heart-icon {
+  font-size: 18px;
+  color: #8b9f89;
+}
+
+/* Date and time section */
+.date-time-section {
+  margin: 30px 0;
+}
+
+.day-label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin: 0 0 5px;
+  color: #5a6c57;
+  font-weight: 400;
+}
+
+.date {
+  font-size: 36px;
+  font-weight: 300;
+  margin: 0 0 15px;
+  color: #2c3e50;
+  font-family: 'Georgia', serif;
+}
+
+.time-decorative {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.time-dots {
+  color: #8b9f89;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.time {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #5a6c57;
+  font-weight: 400;
+}
+
+/* Location section */
+.location-section {
+  margin: 25px 0;
+}
+
+.address {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #5a6c57;
+  font-weight: 400;
+}
+
+/* Dress code */
+.dress-code {
+  margin: 20px 0 30px;
+}
+
+.dress-code p {
+  font-size: 14px;
+  margin: 0;
+  color: #5a6c57;
+  font-style: italic;
+}
+
+/* RSVP Button - Full Screen */
+.rsvp-section {
+  grid-area: rsvp;
+  margin: 0;
+}
+
+.rsvp-button {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  border: none;
+  padding: 18px 50px;
+  border-radius: 35px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(44, 62, 80, 0.4);
+  text-transform: uppercase;
+}
+
+.rsvp-button:hover {
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(44, 62, 80, 0.4);
+}
+
+.rsvp-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 15px rgba(44, 62, 80, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .invitacion-container {
+    max-width: 90%;
+    margin: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .invitacion-container {
+    max-width: 95%;
+    margin: 10px;
+    min-height: 95vh;
+  }
+  
+  .main-content {
+    padding: 25px 30px;
+  }
+  
+  .bride-name,
+  .groom-name {
+    font-size: 36px;
+  }
+  
+  .names-section {
+    flex-direction: column;
+    gap: 10px;
+    margin: 30px 0;
+  }
+  
+  .ampersand {
+    font-size: 28px;
+  }
+  
+  .date {
+    font-size: 32px;
+  }
+  
+  .photo-frame {
+    width: 260px;
+    height: 180px;
+  }
+  
+  .celebration-text {
+    font-size: 15px;
+  }
+  
+  .event-type {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invitacion-container {
+    margin: 5px;
+    min-height: 98vh;
+    border-radius: 15px;
+  }
+  
+  .main-content {
+    padding: 20px 25px;
+  }
+  
+  .bride-name,
+  .groom-name {
+    font-size: 28px;
+  }
+  
+  .date {
+    font-size: 26px;
+  }
+  
+  .photo-frame {
+    width: 220px;
+    height: 150px;
+  }
+  
+  .rsvp-button {
+    padding: 12px 25px;
+    font-size: 12px;
+  }
+  
+  .celebration-text {
+    font-size: 14px;
+  }
+  
+  .event-type {
+    font-size: 12px;
+  }
+  
+  .address {
+    font-size: 13px;
+  }
+  
+  .dress-code p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .invitacion-container {
+    margin: 2px;
+    border-radius: 10px;
+  }
+  
+  .main-content {
+    padding: 15px 20px;
+  }
+  
+  .bride-name,
+  .groom-name {
+    font-size: 24px;
+  }
+  
+  .date {
+    font-size: 22px;
+  }
+  
+  .photo-frame {
+    width: 180px;
+    height: 120px;
+  }
+}
