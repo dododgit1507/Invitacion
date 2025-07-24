@@ -1,4 +1,4 @@
-/* Invitacion Component Styles - Background Image Design */
+/* Invitacion Component Styles - Background Image Design - FIXED */
 .invitacion-container {
   width: 100vw;
   height: 100vh;
@@ -17,7 +17,7 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #cdd3b7;
+  background-color: #e3e4df;
   z-index: 1;
 }
 
@@ -113,7 +113,7 @@
   background: #fff;
 }
 
-/* Floral frame around photo */
+/* Floral frame around photo - FIXED: Using CSS only */
 .photo-circle::before {
   content: '';
   position: absolute;
@@ -121,11 +121,22 @@
   left: -40px;
   right: -40px;
   bottom: -40px;
-  background-image: 
-    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360"><defs><style>.branch{stroke:%23d4c5a3;stroke-width:2;fill:none;opacity:0.7;}.leaf{fill:%23d4c5a3;opacity:0.6;}.flower{fill:%23ffffff;opacity:0.8;}</style></defs><circle cx="180" cy="180" r="160" fill="none" stroke="%23e8dcc6" stroke-width="1" opacity="0.3"/><path class="branch" d="M180,20 Q200,40 220,60 Q240,80 260,100 Q280,120 300,140 Q320,160 340,180 Q320,200 300,220 Q280,240 260,260 Q240,280 220,300 Q200,320 180,340 Q160,320 140,300 Q120,280 100,260 Q80,240 60,220 Q40,200 20,180 Q40,160 60,140 Q80,120 100,100 Q120,80 140,60 Q160,40 180,20"/><ellipse class="leaf" cx="200" cy="50" rx="12" ry="6" transform="rotate(45 200 50)"/><ellipse class="leaf" cx="310" cy="160" rx="10" ry="5" transform="rotate(135 310 160)"/><ellipse class="leaf" cx="310" cy="200" rx="12" ry="6" transform="rotate(-135 310 200)"/><ellipse class="leaf" cx="200" cy="310" rx="10" ry="5" transform="rotate(-45 200 310)"/><ellipse class="leaf" cx="160" cy="310" rx="12" ry="6" transform="rotate(-135 160 310)"/><ellipse class="leaf" cx="50" cy="200" rx="10" ry="5" transform="rotate(135 50 200)"/><ellipse class="leaf" cx="50" cy="160" rx="12" ry="6" transform="rotate(45 50 160)"/><ellipse class="leaf" cx="160" cy="50" rx="10" ry="5" transform="rotate(-45 160 50)"/><circle class="flower" cx="180" cy="40" r="3"/><circle class="flower" cx="320" cy="180" r="2.5"/><circle class="flower" cx="180" cy="320" r="3"/><circle class="flower" cx="40" cy="180" r="2.5"/></svg>');
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 50% 10%, rgba(212, 197, 163, 0.4) 4px, transparent 4px),
+    radial-gradient(circle at 90% 30%, rgba(212, 197, 163, 0.3) 3px, transparent 3px),
+    radial-gradient(circle at 80% 70%, rgba(212, 197, 163, 0.4) 4px, transparent 4px),
+    radial-gradient(circle at 50% 90%, rgba(212, 197, 163, 0.4) 4px, transparent 4px),
+    radial-gradient(circle at 20% 70%, rgba(212, 197, 163, 0.3) 3px, transparent 3px),
+    radial-gradient(circle at 10% 30%, rgba(212, 197, 163, 0.4) 4px, transparent 4px),
+    radial-gradient(circle at 30% 10%, rgba(212, 197, 163, 0.3) 3px, transparent 3px),
+    radial-gradient(circle at 70% 10%, rgba(212, 197, 163, 0.3) 3px, transparent 3px),
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.6) 2px, transparent 2px),
+    radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.6) 2px, transparent 2px),
+    radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.5) 1.5px, transparent 1.5px);
+  background-size: 80px 80px;
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
   pointer-events: none;
   z-index: -1;
 }
@@ -702,6 +713,29 @@
   cursor: not-allowed;
 }
 
+/* Error Message Styling */
+.error-message {
+  color: #c0392b;
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(192, 57, 43, 0.05);
+  border-radius: 5px;
+  font-size: 12px;
+  border-left: 3px solid #c0392b;
+}
+
+/* Guest Found Styling */
+.guest-found {
+  text-align: center;
+  padding: 20px;
+}
+
+.confirmation-status {
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .invitation-card {
@@ -748,4 +782,4 @@
   .attendance-buttons {
     flex-direction: column;
   }
-} 
+}
