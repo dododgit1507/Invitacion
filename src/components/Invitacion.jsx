@@ -211,7 +211,7 @@ const Invitacion = () => {
             
             <div className="search-form">
               <p style={{marginBottom: '15px', color: '#666'}}>
-                Ingresa tu nombre completo como aparece en la invitación:
+                Ingresa tu nombre y primer apellido:
               </p>
               
               <div className="form-group">
