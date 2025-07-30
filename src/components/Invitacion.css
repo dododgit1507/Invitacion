@@ -493,7 +493,8 @@
   white-space: nowrap;
   position: relative;
   z-index: 100;
-  margin-left: -15px;
+  margin-left: -45px;
+  margin-bottom: 20px;
 }
 
 .confirm-button:hover {
@@ -832,6 +833,7 @@
     font-size: 11px;
     min-width: 260px;
     max-width: 85vw;
+    
   }
 }
 
